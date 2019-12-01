@@ -1,7 +1,12 @@
 <template>
   <div>
     <h1>Dogs for adoptions</h1>
-    <b-table striped hover :items="dogs"></b-table>
+    <b-table striped hover :items="dogs">
+      <template v-slot:cell(name)="data">
+        <!-- `data.value` is the value after formatted by the Formatter -->
+        <router-link :to="`/pets/dogs/${data.index}`">{{ data.value }}</router-link>
+      </template>
+    </b-table>
   </div>
 </template>
 
